@@ -6,7 +6,7 @@ INSTALLED_APPS += [
     'django_extensions',
 ]
 
-ALLOWED_HOSTS += ['localhost', 'engine']
+ALLOWED_HOSTS += ['localhost', 'engine','class.podiumxp.com']
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'engine',
         'USER': 'postgres',
         'HOST': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': '!postgres@-',
         'PORT': 5432,
     }
 }

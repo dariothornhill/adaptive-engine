@@ -5,20 +5,21 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: "!postgres@-"
     volumes:
       - pgdata:/var/lib/postgresql/data/
     ports:
-      - "5432:5432"
+      - "54321:5432"
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000 --log-level=info --log-file - --access-logfile -
+    # command: bash -c "nginx & /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8001 --log-level=info --log-file - --access-logfile -"
+    command: /app/entrypoint.sh
     volumes:
       - .:/app
     ports:
-      - "80:8000"
+      - "8580:8000"
     links:
       - postgres
 
